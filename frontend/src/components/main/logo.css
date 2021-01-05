@@ -9,7 +9,7 @@
     min-height: 42px;
     width: auto;
     height: auto;
-    content: url(../images/logo_1.PNG);
+    content: url(../../images/logo_1.PNG);
 }
 
 .logo2{
@@ -22,7 +22,7 @@
     min-height: 42px;
     width: auto;
     height: auto;
-    content: url(../images/logo_2.PNG);
+    content: url(../../images/logo_2.PNG);
 }
 
 .logo3{
@@ -35,7 +35,7 @@
     min-height: 42px;
     width: auto;
     height: auto;
-    content: url(../images/logo_3.PNG);
+    content: url(../../images/logo_3.PNG);
 }
 
 .logo4{
@@ -48,7 +48,7 @@
     min-height: 42px;
     width: auto;
     height: auto;
-    content: url(../images/logo_4.PNG);
+    content: url(../../images/logo_4.PNG);
 }
 
 .logo5{
@@ -61,5 +61,5 @@
     min-height: 42px;
     width: auto;
     height: auto;
-    content: url(../images/logo_5.PNG);
+    content: url(../../images/logo_5.PNG);
 }
