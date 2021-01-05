@@ -1,0 +1,65 @@
+
+.logo1{
+    padding-left: 2%;
+    padding-top: 1.2%;
+    display: block;
+    max-width:297px;
+    max-height:120px;
+    min-width: 118px;
+    min-height: 42px;
+    width: auto;
+    height: auto;
+    content: url(../images/logo_1.PNG);
+}
+
+.logo2{
+    padding-left: 2%;
+    padding-top: 1.2%;
+    display: block;
+    max-width:297px;
+    max-height:120px;
+    min-width: 118px;
+    min-height: 42px;
+    width: auto;
+    height: auto;
+    content: url(../images/logo_2.PNG);
+}
+
+.logo3{
+    padding-left: 2%;
+    padding-top: 1.2%;
+    display: block;
+    max-width:297px;
+    max-height:120px;
+    min-width: 118px;
+    min-height: 42px;
+    width: auto;
+    height: auto;
+    content: url(../images/logo_3.PNG);
+}
+
+.logo4{
+    padding-left: 2%;
+    padding-top: 1.2%;
+    display: block;
+    max-width:297px;
+    max-height:120px;
+    min-width: 118px;
+    min-height: 42px;
+    width: auto;
+    height: auto;
+    content: url(../images/logo_4.PNG);
+}
+
+.logo5{
+    padding-left: 2%;
+    padding-top: 1.2%;
+    display: block;
+    max-width:297px;
+    max-height:120px;
+    min-width: 118px;
+    min-height: 42px;
+    width: auto;
+    height: auto;
+    content: url(../images/logo_5.PNG);
+}

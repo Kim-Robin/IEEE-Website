@@ -1,0 +1,13 @@
+.word{
+    font-size: 60px;
+    text-align: left;
+}
+
+.wordColumn{
+    display: flex;
+    left: 50%;
+    margin-left: auto;
+    margin-right: 11.3%;
+    justify-content: center;
+    width: 480px;
+}

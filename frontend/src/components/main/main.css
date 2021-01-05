@@ -1,0 +1,12 @@
+.mainpage{
+    width: 100%;
+    min-height: 450px;
+    height: auto;
+    position: relative;
+    max-height: 750px;
+    background: linear-gradient(140deg, #FFFFFF 50%, #3D195D 50%);
+}
+
+.welcomeText{
+    padding-top: 1.5%;
+}
