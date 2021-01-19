@@ -1,0 +1,17 @@
+.officers-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    max-height: 25%;
+    overflow-y: hidden;
+}
+
+.officer-card {
+    border: 1px solid black;
+    text-align: center;
+}
+
+.officer-card > img {
+    object-fit: cover;
+}
