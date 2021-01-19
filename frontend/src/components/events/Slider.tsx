@@ -22,9 +22,7 @@ export const Slider: React.FC = () => {
 
         // get the styles from the css so that we don't use 'magin numbers' for the margin and width
         const slide = document.querySelector('.slide') as Element;
-        console.log(slide);
         const slideStyles: CSSStyleDeclaration = window.getComputedStyle(slide);
-        console.log(slideStyles);
 
         const browserWidth: number = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
@@ -34,15 +32,7 @@ export const Slider: React.FC = () => {
         const slideMarginRight: number = parseInt(slideStyles.getPropertyValue('margin-right').slice(0, -2));
         const slideWidth: number = parseInt(slideStyles.getPropertyValue('min-width')) / 100;
 
-        //x === 0 ? setX(-((browserWidth * slideMarginLeft + browserWidth * slideMarginRight) + (slideWidth * browserWidth)) * (events.length - 1)) : setX(x + ((browserWidth * slideMarginLeft + browserWidth * slideMarginRight) + (slideWidth * browserWidth)));
-        console.log(x)
         x === 0 ? setX(-((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)) * (events.length - 1)) : setX(x + ((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)));
-        console.log(slideMarginLeft + slideMarginRight)
-        console.log(slideWidth * browserWidth)
-        console.log(-((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)))
-        console.log(((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)))
-        console.log(x + ((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)))
-        console.log(x)
     };
 
     const goRight = function(): void {
@@ -54,12 +44,13 @@ export const Slider: React.FC = () => {
         const browserWidth: number = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
         
         // +x and parseInt both convert string to integer
-        const slideMarginLeft: number = +(slideStyles.getPropertyValue('margin-left'));
-        const slideMarginRight = +(slideStyles.getPropertyValue('margin-right'));
-        const slideWidth: number = parseInt(slideStyles.getPropertyValue('min-width'));
+        // using slice to get rid of px
+        const slideMarginLeft: number = +(slideStyles.getPropertyValue('margin-left').slice(0, -2));
+        const slideMarginRight: number = parseInt(slideStyles.getPropertyValue('margin-right').slice(0, -2));
+        const slideWidth: number = parseInt(slideStyles.getPropertyValue('min-width')) / 100;
         
         // use 0.15 because margin left and margin right are 15%, and use 0.25 because each slide's width is 25%
-        x === -((browserWidth * slideMarginLeft * slideMarginRight) + (slideWidth * browserWidth)) * (events.length - 1) ? setX(0) : setX(x - ((browserWidth * slideMarginLeft * slideMarginRight) + (slideWidth * browserWidth)));
+        x === -((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)) * (events.length - 1) ? setX(0) : setX(x - ((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)));
     };
 
     return (
