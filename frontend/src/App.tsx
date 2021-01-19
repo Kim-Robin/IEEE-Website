@@ -1,11 +1,13 @@
 import React from 'react';
 import Main from './components/main/Main';
-
-
+import { Slider } from './components/events/Slider';
 
 function App() {
   return (
-  <Main />
+    <div>
+      <Main />
+      <Slider />
+    </div>
   );
 }
 
