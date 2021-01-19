@@ -9,27 +9,57 @@ import React, { useState } from 'react';
 
 export const Slider: React.FC = () => {
     let events: JSX.Element[] = [
-        <EventComponent src={require('./fox.jpg')} />,
-        <EventComponent src={"./cute_thing.jpg"} />,
-        <EventComponent src={"./moose.jpg"} />,
-        <EventComponent src={"./monkey.jpg"} />,
-        <EventComponent src={"./chameleon.jpg"} />
+        <EventComponent src={''} />,
+        <EventComponent src={""} />,
+        <EventComponent src={""} />,
+        <EventComponent src={""} />,
+        <EventComponent src={""} />
     ];
 
     const [x, setX] = useState(0);
 
     const goLeft: () => void = function (): void {
+
+        // get the styles from the css so that we don't use 'magin numbers' for the margin and width
+        const slide = document.querySelector('.slide') as Element;
+        console.log(slide);
+        const slideStyles: CSSStyleDeclaration = window.getComputedStyle(slide);
+        console.log(slideStyles);
+
         const browserWidth: number = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
-        // use 0.15 because margin left and margin right are 15%, and use 0.25 because each slide's width is 25%
-        x === 0 ? setX(-((2 * browserWidth * 0.15) + (0.25 * browserWidth)) * (events.length - 1)) : setX(x + ((2 * browserWidth * 0.15) + (0.25 * browserWidth)));
+        // +x and parseInt both convert string to integer
+        // using slice to get rid of px
+        const slideMarginLeft: number = +(slideStyles.getPropertyValue('margin-left').slice(0, -2));
+        const slideMarginRight: number = parseInt(slideStyles.getPropertyValue('margin-right').slice(0, -2));
+        const slideWidth: number = parseInt(slideStyles.getPropertyValue('min-width')) / 100;
+
+        //x === 0 ? setX(-((browserWidth * slideMarginLeft + browserWidth * slideMarginRight) + (slideWidth * browserWidth)) * (events.length - 1)) : setX(x + ((browserWidth * slideMarginLeft + browserWidth * slideMarginRight) + (slideWidth * browserWidth)));
+        console.log(x)
+        x === 0 ? setX(-((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)) * (events.length - 1)) : setX(x + ((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)));
+        console.log(slideMarginLeft + slideMarginRight)
+        console.log(slideWidth * browserWidth)
+        console.log(-((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)))
+        console.log(((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)))
+        console.log(x + ((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)))
+        console.log(x)
     };
 
     const goRight = function(): void {
+
+        // get the styles from the css so that we don't use 'magin numbers' for the margin and width
+        const slide = document.querySelector('.slide') as Element;
+        const slideStyles: CSSStyleDeclaration = window.getComputedStyle(slide);
+
         const browserWidth: number = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
         
+        // +x and parseInt both convert string to integer
+        const slideMarginLeft: number = +(slideStyles.getPropertyValue('margin-left'));
+        const slideMarginRight = +(slideStyles.getPropertyValue('margin-right'));
+        const slideWidth: number = parseInt(slideStyles.getPropertyValue('min-width'));
+        
         // use 0.15 because margin left and margin right are 15%, and use 0.25 because each slide's width is 25%
-        x === -((2 * browserWidth * 0.15) + (0.25 * browserWidth)) * (events.length - 1) ? setX(0) : setX(x - ((2 * browserWidth * 0.15) + (0.25 * browserWidth)));
+        x === -((browserWidth * slideMarginLeft * slideMarginRight) + (slideWidth * browserWidth)) * (events.length - 1) ? setX(0) : setX(x - ((browserWidth * slideMarginLeft * slideMarginRight) + (slideWidth * browserWidth)));
     };
 
     return (
@@ -100,8 +130,8 @@ const EventComponent: React.FC<EventComponentProps> = ({src}) => {
                 }}></img>
             </div>
             <div style={{height: "40%"}}>
-                <p>Title</p>
-                <p>Date</p>
+                <p>Example Title</p>
+                <p>Example Date</p>
             </div>
         </div>
     );   
