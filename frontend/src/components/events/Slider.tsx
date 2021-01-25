@@ -20,7 +20,7 @@ export const Slider: React.FC = () => {
 
     const goLeft: () => void = function (): void {
 
-        // get the styles from the css so that we don't use 'magin numbers' for the margin and width
+        // get the styles from the css so that we don't use 'magic numbers' for the margin and width
         const slide = document.querySelector('.slide') as Element;
         const slideStyles: CSSStyleDeclaration = window.getComputedStyle(slide);
 
@@ -37,7 +37,7 @@ export const Slider: React.FC = () => {
 
     const goRight = function(): void {
 
-        // get the styles from the css so that we don't use 'magin numbers' for the margin and width
+        // get the styles from the css so that we don't use 'magic numbers' for the margin and width
         const slide = document.querySelector('.slide') as Element;
         const slideStyles: CSSStyleDeclaration = window.getComputedStyle(slide);
 
@@ -49,7 +49,6 @@ export const Slider: React.FC = () => {
         const slideMarginRight: number = parseInt(slideStyles.getPropertyValue('margin-right').slice(0, -2));
         const slideWidth: number = parseInt(slideStyles.getPropertyValue('min-width')) / 100;
         
-        // use 0.15 because margin left and margin right are 15%, and use 0.25 because each slide's width is 25%
         x === -((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)) * (events.length - 1) ? setX(0) : setX(x - ((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)));
     };
 
@@ -58,6 +57,7 @@ export const Slider: React.FC = () => {
             <div id="slider-header">
                 <h1>Events</h1>
             </div>
+            <div className="highlight"></div>
             <div className="slider">
                 {
                     events.map((item: JSX.Element, index: number) => {
