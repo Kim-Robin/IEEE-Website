@@ -72,4 +72,8 @@
         min-width: 60%;
         margin-left: 7%;
     }
+
+    .highlight {
+        left: 0;
+    }
 }
