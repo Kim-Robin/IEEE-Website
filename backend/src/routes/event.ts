@@ -1,14 +1,28 @@
 import express from "express";
+import {Events, eventModel} from "../model/events";
 
 const router = express.Router();
 
 /* event section endpoint*/
 
-router.get('/event/past', (req, res, next) => {
+router.get('/events/past', (req, res, next) => {
     res.send("past event");
 });
 
-router.get('/event/future', (req, res, next) => {
+router.get('/events/future', (req, res, next) => {
     res.send("future event");
-})
+});
+
+router.get('/events', (req: express.Request, res: express.Response ) =>{
+
+    eventModel.getAllEvents()
+        .then(events =>{
+            res.json(events);
+        })
+        .catch(err => res.status(500).json({
+            err: err.message
+        }));
+});
+
+
 export = router;
