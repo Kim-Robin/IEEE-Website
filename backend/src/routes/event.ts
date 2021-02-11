@@ -1,5 +1,6 @@
 import express from "express";
 import {Events, eventModel} from "../model/events";
+import cors from 'cors';
 
 const router = express.Router();
 
@@ -13,7 +14,7 @@ router.get('/events/future', (req, res, next) => {
     res.send("future event");
 });
 
-router.get('/events', (req: express.Request, res: express.Response ) =>{
+router.get('/events', cors(), (req: express.Request, res: express.Response ) =>{
 
     eventModel.getAllEvents()
         .then(events =>{

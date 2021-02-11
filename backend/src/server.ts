@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 
 import logger from './config/logger';
 import indexRouter from './routes/index';
@@ -6,9 +7,9 @@ import eventRouter from './routes/event';
 import memberRouter from './routes/member'; 
 import scheduleRouter from './routes/schedule';
 
-
-
 const app = express();
+
+app.use(cors());
 
 app.use(logger);
 
@@ -26,6 +27,3 @@ app.get("/yo",(req, res) =>{
 app.listen(5000, ()=>{
         console.log("server is running on<Plug>PeepOpenort 5000");
 });
-
-app.listen()
-
