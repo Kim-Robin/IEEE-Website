@@ -1,0 +1,1 @@
+{"version":3,"file":"schedule.js","sourceRoot":"","sources":["../../src/model/schedule.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,uCAAuC;AAUvC,MAAM,cAAc,GAAG,GAAQ,EAAE;IAC7B,MAAM,MAAM,GAAG,MAAM,YAAO,CAAC,wBAAwB,CAAC,CAAC;IACvD,OAAO,MAAoB,CAAC;AAChC,CAAC,CAAA,CAAA;AAEY,QAAA,aAAa,GAAE;IACxB,cAAc;CACjB,CAAA"}
