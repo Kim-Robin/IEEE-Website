@@ -1,0 +1,47 @@
+ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+}
+
+li{
+    padding: 0px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.nav-content{
+    font-family: Ubuntu;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 25px;
+    max-width: 120px;
+    min-width: 110px;
+    text-align: center;
+    display: inline;
+    color: #BFA1F0;
+}
+
+.nav-list{
+    max-width: 800px;
+}
+
+@media only screen and (max-width: 800px){
+    .nav-content{
+        font-family: Ubuntu;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        font-size: 25px;
+        max-width: none;
+        text-align: center;
+        display: block;
+    }
+
+}
+
+
