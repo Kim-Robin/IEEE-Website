@@ -14,6 +14,7 @@ export const dbQuery = async (query: string, params?: any[]) =>{
          }
          console.log("Connection to the in-memory SQL");
      });
+
      const process = new Promise<any[]>((resolve, reject) =>{
 
         db.all(query, params, (err, rows) =>{
