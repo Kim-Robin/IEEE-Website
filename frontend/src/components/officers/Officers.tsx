@@ -9,9 +9,9 @@ export const Officers: React.FC = () => {
         function makeOfficerCards(data: any) {
             let fetchedOfficers: JSX.Element[] = [];
             data.map((item: Members) => {
-                fetchedOfficers.push(<OfficerCard 
+                fetchedOfficers.push(<OfficerCard
                     id={item.id}
-                    first_name={item.first_name} 
+                    first_name={item.first_name}
                     last_name={item.last_name}
                     role={item.role}
                     position={item.position}
@@ -22,7 +22,7 @@ export const Officers: React.FC = () => {
             });
             return fetchedOfficers;
         }
-        
+
         async function fetchOfficers(officerType: string) {
             let response: void | AxiosResponse<any> = await axios.get('http://localhost:5000/members/' + officerType)
                 .catch((error) => {
@@ -65,37 +65,37 @@ export const Officers: React.FC = () => {
             });
     }, []);
 
-    const [eboard, setEboard] = useState([<OfficerCard 
-        id={-1} 
-        first_name={""} 
-        last_name={""} 
-        role={""} 
-        position={""} 
-        linkedIn={""} 
-        start_year={0} 
-        end_year={0} 
+    const [eboard, setEboard] = useState([<OfficerCard
+        id={-1}
+        first_name={""}
+        last_name={""}
+        role={""}
+        position={""}
+        linkedIn={""}
+        start_year={0}
+        end_year={0}
     />]);
 
-    const [jboard, setJboard] = useState([<OfficerCard 
-        id={-1} 
-        first_name={""} 
-        last_name={""} 
-        role={""} 
-        position={""} 
-        linkedIn={""} 
-        start_year={0} 
-        end_year={0} 
+    const [jboard, setJboard] = useState([<OfficerCard
+        id={-1}
+        first_name={""}
+        last_name={""}
+        role={""}
+        position={""}
+        linkedIn={""}
+        start_year={0}
+        end_year={0}
     />]);
 
-    const [dboard, setDboard] = useState([<OfficerCard 
-        id={-1} 
-        first_name={""} 
-        last_name={""} 
-        role={""} 
-        position={""} 
-        linkedIn={""} 
-        start_year={0} 
-        end_year={0} 
+    const [dboard, setDboard] = useState([<OfficerCard
+        id={-1}
+        first_name={""}
+        last_name={""}
+        role={""}
+        position={""}
+        linkedIn={""}
+        start_year={0}
+        end_year={0}
     />]);
 
     // hook with an initial state as the e board
