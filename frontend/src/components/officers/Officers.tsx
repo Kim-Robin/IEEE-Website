@@ -1,25 +1,102 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios, { AxiosResponse } from 'axios';
+import { Members } from '../../../../backend/src/model/members';
 
 export const Officers: React.FC = () => {
 
-    const eboard: JSX.Element[] = [
-        <OfficerCard />,
-        <OfficerCard />,
-        <OfficerCard />,
-        <OfficerCard />
-    ];
+    // simulate componentDidMount(), do axios call:
+    useEffect(() => {
+        function makeOfficerCards(data: any) {
+            let fetchedOfficers: JSX.Element[] = [];
+            data.map((item: Members) => {
+                fetchedOfficers.push(<OfficerCard 
+                    id={item.id}
+                    first_name={item.first_name} 
+                    last_name={item.last_name}
+                    role={item.role}
+                    position={item.position}
+                    linkedIn={item.linkedIn}
+                    start_year={item.start_year}
+                    end_year={item.end_year}
+                />);
+            });
+            return fetchedOfficers;
+        }
+        
+        async function fetchOfficers(officerType: string) {
+            let response: void | AxiosResponse<any> = await axios.get('http://localhost:5000/members/' + officerType)
+                .catch((error) => {
+                    console.log(error.config);
+                    if (error.response) {
+                        throw new Error(`Axios response error: ${error.response.data}\nStatus: ${error.response.status}\nHeaders: ${error.response.headers}`);
+                    } else if (error.request) {
+                        throw new Error(`Axios request error: ${error.request}`);
+                    } else {
+                        throw new Error(`Axios error: ${error.message}`);
+                    }
+                });
+            return response;
+        }
 
-    const jboard: JSX.Element[] = [
-        <OfficerCard />,
-        <OfficerCard />,
-        <OfficerCard />,
-        <OfficerCard />
-    ];
+        fetchOfficers('eboard')
+            .then(response => {
+                const fetchedOfficers = makeOfficerCards(response.data);
+                setEboard(fetchedOfficers as JSX.Element[]);
+                setSelectedOfficersGroup(fetchedOfficers);
+            })
+            .catch(error => {
+                console.log(`Error getting eboard: ${error}`);
+            });
+        fetchOfficers('jboard')
+            .then(response => {
+                const fetchedOfficers = makeOfficerCards(response.data);
+                setJboard(fetchedOfficers as JSX.Element[]);
+            })
+            .catch(error => {
+                console.log(`Error getting eboard: ${error}`);
+            });
+        fetchOfficers('dboard')
+            .then(response => {
+                const fetchedOfficers = makeOfficerCards(response.data);
+                setDboard(fetchedOfficers as JSX.Element[]);
+            })
+            .catch(error => {
+                console.log(`Error getting eboard: ${error}`);
+            });
+    }, []);
 
-    const dboard: JSX.Element[] = [
-        <OfficerCard />,
-        <OfficerCard />
-    ];
+    const [eboard, setEboard] = useState([<OfficerCard 
+        id={-1} 
+        first_name={""} 
+        last_name={""} 
+        role={""} 
+        position={""} 
+        linkedIn={""} 
+        start_year={0} 
+        end_year={0} 
+    />]);
+
+    const [jboard, setJboard] = useState([<OfficerCard 
+        id={-1} 
+        first_name={""} 
+        last_name={""} 
+        role={""} 
+        position={""} 
+        linkedIn={""} 
+        start_year={0} 
+        end_year={0} 
+    />]);
+
+    const [dboard, setDboard] = useState([<OfficerCard 
+        id={-1} 
+        first_name={""} 
+        last_name={""} 
+        role={""} 
+        position={""} 
+        linkedIn={""} 
+        start_year={0} 
+        end_year={0} 
+    />]);
 
     // hook with an initial state as the e board
     const [selectedOfficersGroup, setSelectedOfficersGroup] = useState(eboard);
@@ -75,7 +152,7 @@ export const Officers: React.FC = () => {
                     <li className="officer-group-toggle" onClick={toggleOfficerGroup}>D-Board</li>
                 </ul>
             </div>
-            <div className="highlight"></div>
+            <div className="officers-highlight"></div>
             <div className="officers-container">
                 {
                     selectedOfficersGroup.map((item: JSX.Element, index: number) => {
@@ -89,12 +166,16 @@ export const Officers: React.FC = () => {
     );
 }
 
-const OfficerCard: React.FC = () => {
+const OfficerCard: React.FC<Members> = ({first_name, last_name, role, position, linkedIn, start_year, end_year}) => {
+    function getPlaceholder(event: any) {
+        event.target.src = "https://via.placeholder.com/200x200.png?text=IEEE+Officer";
+    }
+
     return (
         <div className="officer-card">
-            <img className="officer-portrait" src="https://placehold.it/200x200" alt="officer portrait"></img>
-            <p>example name</p>
-            <p>example position</p>
+            <img className="officer-portrait" width="200" src={linkedIn} alt="IEEE Officer Portrait" onError={getPlaceholder}></img>
+            <p>{first_name} {last_name}</p>
+            <p>{position}</p>
         </div>
     );
 }

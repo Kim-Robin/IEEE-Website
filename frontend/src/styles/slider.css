@@ -73,6 +73,12 @@ body {
     background: url('../images/right_arrow.svg') no-repeat center center;
 }
 
+@media only screen and (max-width: 800px) {
+    .slide {
+        min-width: 40%;
+    }
+}
+
 @media only screen and (max-width: 500px) {
     .slide {
         min-width: 60%;

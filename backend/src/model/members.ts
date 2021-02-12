@@ -17,6 +17,27 @@ const getAllMembers = async ()=>{
     return values as Members[];
 }
 
+const getEboardMembers = async () => {
+    const values = await dbQuery(`SELECT * FROM Members WHERE role = 'Eboard'`);
+    console.log('eboard ' + values);
+    return values as Members[];
+}
+
+const getJboardMembers = async () => {
+    const values = await dbQuery(`SELECT * FROM Members WHERE role = 'Jboard'`);
+    console.log('jboard ' + values);
+    return values as Members[];
+}
+
+const getDboardMembers = async () => {
+    const values = await dbQuery(`SELECT * FROM Members WHERE role = 'Dboard'`);
+    console.log('dboard ' + values);
+    return values as Members[];
+}
+
 export const memberModel = {
-    getAllMembers
+    getAllMembers,
+    getEboardMembers,
+    getJboardMembers,
+    getDboardMembers
 }

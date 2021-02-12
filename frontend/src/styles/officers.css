@@ -6,7 +6,7 @@ body {
 
 .officers-header {
     display: flex;
-    flex-direction: horizontal;
+    flex-direction: row;
 }
 
 .officers-header > h1 {
@@ -15,9 +15,10 @@ body {
 
 .officers-header > ul {
     flex-grow: 2;
+    align-self: center;
 }
 
-.highlight {
+.officers-highlight {
     height: 20px;
     position: relative;
     top: -40px;
@@ -75,11 +76,20 @@ body {
     object-fit: cover;
 }
 
-/*@media only screen and (min-width: 500px) {
-    .officers-container {
-        display: grid;
-        grid-template-columns: repeat(4, 15%);
-        grid-template-rows: repeat(5, auto);
-        width: 100%;
+/** some mobile styling **/
+@media only screen and (max-width: 500px) {
+    .officers-header {
+        flex-wrap: wrap;
     }
-}*/
+
+    .officers-highlight {
+        left: 0;
+        top: -90px;
+    }
+
+    .officer-group-toggle-container {
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+    }
+}
