@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios, { AxiosResponse } from 'axios';
 import { Members } from '../../../../backend/src/model/members';
+import * as officers from './fetchOfficers';
 
 export const Officers: React.FC = () => {
 
@@ -23,46 +23,21 @@ export const Officers: React.FC = () => {
             return fetchedOfficers;
         }
 
-        async function fetchOfficers(officerType: string) {
-            let response: void | AxiosResponse<any> = await axios.get('http://localhost:5000/members/' + officerType)
-                .catch((error) => {
-                    console.log(error.config);
-                    if (error.response) {
-                        throw new Error(`Axios response error: ${error.response.data}\nStatus: ${error.response.status}\nHeaders: ${error.response.headers}`);
-                    } else if (error.request) {
-                        throw new Error(`Axios request error: ${error.request}`);
-                    } else {
-                        throw new Error(`Axios error: ${error.message}`);
-                    }
-                });
-            return response;
-        }
+        officers.fetchEboard().then(eboard => {
+            const eboardCards = makeOfficerCards(eboard);
+            setEboard(eboardCards);
+            setSelectedOfficersGroup(eboardCards);
+        });
 
-        fetchOfficers('eboard')
-            .then(response => {
-                const fetchedOfficers = makeOfficerCards(response.data);
-                setEboard(fetchedOfficers as JSX.Element[]);
-                setSelectedOfficersGroup(fetchedOfficers);
-            })
-            .catch(error => {
-                console.log(`Error getting eboard: ${error}`);
-            });
-        fetchOfficers('jboard')
-            .then(response => {
-                const fetchedOfficers = makeOfficerCards(response.data);
-                setJboard(fetchedOfficers as JSX.Element[]);
-            })
-            .catch(error => {
-                console.log(`Error getting eboard: ${error}`);
-            });
-        fetchOfficers('dboard')
-            .then(response => {
-                const fetchedOfficers = makeOfficerCards(response.data);
-                setDboard(fetchedOfficers as JSX.Element[]);
-            })
-            .catch(error => {
-                console.log(`Error getting eboard: ${error}`);
-            });
+        officers.fetchJboard().then(jboard => {
+            const jboardCards = makeOfficerCards(jboard);
+            setJboard(jboardCards);
+        });
+
+        officers.fetchDboard().then(dboard => {
+            const dboardCards = makeOfficerCards(dboard);
+            setDboard(dboardCards);
+        });
     }, []);
 
     const [eboard, setEboard] = useState([<OfficerCard
