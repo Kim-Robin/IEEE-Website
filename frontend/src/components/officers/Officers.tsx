@@ -143,7 +143,7 @@ export const Officers: React.FC = () => {
     }
 
     return (
-        <div>
+        <div id="main-container">
             <div className="officers-header">
                 <h1 style={{marginLeft: "2%"}}>Meet the...</h1>
                 <ul className="officer-group-toggle-container">
@@ -174,8 +174,10 @@ const OfficerCard: React.FC<Members> = ({first_name, last_name, role, position, 
     return (
         <div className="officer-card">
             <img className="officer-portrait" width="200" src={linkedIn} alt="IEEE Officer Portrait" onError={getPlaceholder}></img>
-            <p>{first_name} {last_name}</p>
-            <p>{position}</p>
+            <div>
+                <p>{first_name} {last_name}</p>
+                <p>{position}</p>
+            </div>
         </div>
     );
 }

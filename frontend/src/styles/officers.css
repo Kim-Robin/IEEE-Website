@@ -11,6 +11,7 @@ body {
 
 .officers-header > h1 {
     align-self: center;
+    z-index: 2;
 }
 
 .officers-header > ul {
@@ -25,9 +26,7 @@ body {
     left: 10px;
     width: 230px;
     line-height: 1.6;
-    /* background-color: #ffc832; */
     background-color: #EAB03C;
-    z-index: -1;
 }
 
 .officer-group-toggle-container {
@@ -44,17 +43,23 @@ body {
     transition: 0.1s;
     font-size: 1.17em;
     font-weight: bold;
+    border: 3px solid rgb(46, 36, 89);
+    border-radius: 0.5rem;
 }
 
 .officer-group-toggle.active {
     border-radius: 0.5rem;
-    background-color: #BFA1F0;
+    border: 3px solid #EAB03C;
+    color: white;
+    background-color: rgb(46, 36, 89);
 }
 
 .officer-group-toggle:hover {
     cursor: pointer;
-    border-radius: 0.5rem;
-    background-color: #BFA1F0;
+    /* background-color: #BFA1F0; */
+    border: 3px solid #EAB03C;
+    color: white;
+    background-color: rgb(46, 36, 89);
 }
 
 .officers-container {
@@ -68,15 +73,29 @@ body {
 }
 
 .officer-card {
-    border: 1px solid black;
-    text-align: center;
+    text-align: center;    
+    -webkit-box-shadow: 8px -8px rgb(46, 36, 89);
+    -webkit-border: 1px solid rgb(46, 36, 89);
+    box-shadow: 8px -8px rgb(46, 36, 89);
+    border: 1px solid rgb(46, 36, 89);
 }
 
 .officer-card > img {
     object-fit: cover;
 }
 
+.officer-card > div {
+    padding: 1%;
+}
+
 /** some mobile styling **/
+@media only screen and (max-width: 800px) {
+    .officer-card {
+        box-shadow: rgba(0, 0, 0, 0.117647) 0px 2px 4px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+        border: none;
+    }
+}
+
 @media only screen and (max-width: 500px) {
     .officers-header {
         flex-wrap: wrap;
@@ -84,7 +103,7 @@ body {
 
     .officers-highlight {
         left: 0;
-        top: -90px;
+        top: -95px;
     }
 
     .officer-group-toggle-container {
