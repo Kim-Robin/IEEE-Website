@@ -68,9 +68,9 @@ function modifyFetchedOfficer(officer: Members) {
     return officer;
 }
 
-function makeOfficers(data: any[]) {
+function makeOfficers(response: AxiosResponse<any>) {
     let fetchedOfficers: Members[] = [];
-    data.forEach((item: Members) => {
+    response.data.forEach((item: Members) => {
         modifyFetchedOfficer(item);
         fetchedOfficers.push(item);
     });
@@ -81,8 +81,7 @@ export async function fetchEboard() {
 
     const eboard = await fetchOfficers('eboard')
         .then(response => {
-            const fetchedOfficers = makeOfficers(response.data);
-            return fetchedOfficers;
+            return makeOfficers(response);
         })
         .catch(error => {
             console.log(`Error getting eboard: ${error}`);
@@ -94,8 +93,7 @@ export async function fetchJboard() {
     
     const jboard = await fetchOfficers('jboard')
         .then(response => {
-            const fetchedOfficers = makeOfficers(response.data);
-            return fetchedOfficers;
+            return makeOfficers(response);
         })
         .catch(error => {
             console.log(`Error getting jboard: ${error}`);
@@ -107,8 +105,7 @@ export async function fetchDboard() {
     
     const dboard = await fetchOfficers('dboard')
         .then(response => {
-            const fetchedOfficers = makeOfficers(response.data);
-            return fetchedOfficers;
+            return makeOfficers(response);
         })
         .catch(error => {
             console.log(`Error getting dboard: ${error}`);
