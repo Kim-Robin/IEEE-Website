@@ -1,63 +1,42 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { Events } from '../../../../backend/src/model/events';
+import fetchEvents from './fetchEvents';
 
-// import fox from './fox.jpg';
-
-// import left_arrow from './left_arrow.svg';
-// import right_arrow from './right_arrow.svg';
-
-// const logo: any = require('./fox.jpg');
-
-interface Event {
-    id?: number;
-    event_name: string;
-    image: string;
-    year: number;
-    month: number;
-    day: number;
-    past_status?: number;
-}
+import test from '../../images/event-thumbnails/2020-2021/ieee_0_intro.jpg';
 
 export const Slider: React.FC = () => {
 
     // simulate componentDidMount(), do axios call
     useEffect(() => {
         (async () => {
-            try {
-                const response = await axios.get('http://localhost:5000/events');
-                let fetchedEvents: JSX.Element[] = [];
-                response.data.map((item: Event) => {
-                    fetchedEvents.push(<EventComponent 
-                        event_name={item.event_name} 
+            const fetchedEvents = await fetchEvents();
+            console.log(fetchedEvents);
+            let eventCards: JSX.Element[] = [];
+            fetchedEvents.forEach((item: Events) => {
+                eventCards.push(
+                    <EventComponent 
+                        id={item.id}
+                        event_name={item.event_name}
                         image={item.image}
                         year={item.year}
                         month={item.month}
                         day={item.day}
-                    />);
-                });
-                setEvents(fetchedEvents);
-            } catch (err) {
-                console.log(err);
-                setEvents([
-                    <EventComponent 
-                        event_name={"Fetched failed. Retry."} 
-                        image={""}
-                        year={0}
-                        month={0}
-                        day={0}
+                        past_status={item.past_status}
                     />
-                ]);
-            }
-        })();
-        
+                );
+            });
+            setEvents(eventCards);
+        })();        
     }, []);
 
     const [events, setEvents] = useState([<EventComponent 
+        id={-1}
         event_name={"N/A"} 
         image={"N/A"}
         year={0}
         month={0}
-        day={0}    
+        day={0} 
+        past_status={0}   
     />]);
 
     const [x, setX] = useState(0);
@@ -120,32 +99,11 @@ export const Slider: React.FC = () => {
     );
 };
 
-const EventComponent: React.FC<Event> = ({event_name, image, year, month, day}) => {
-
-    const imgStyles = {
-        width: "100%",
-        height: "100%",
-        objectFit: "contain"
-    };
+const EventComponent: React.FC<Events> = ({event_name, image, year, month, day}) => {
     
     return (
         <div style={{height: "100%", textAlign: "center"}}>
             <div style={{height: "60%"}}>
-                {/*<img width="400" height="400" src="https://placehold.it/400x400" alt="slide-img" style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover"
-                }}></img>*/}
-                {/*<img width="400" height="400" src={require(src)} alt="slide-img" style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover"
-                }}></img>*/}
-                {/*<img width="400" height="400" src={String(image)} alt="slide-img" style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover"
-                }}></img>*/}
                 <img width="400" height="400" src={image} alt="slide-img" style={{
                     width: "100%",
                     height: "100%",
