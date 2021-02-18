@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 // import fox from './fox.jpg';
 
@@ -7,14 +8,57 @@ import React, { useState } from 'react';
 
 // const logo: any = require('./fox.jpg');
 
+interface Event {
+    id?: number;
+    event_name: string;
+    image: string;
+    year: number;
+    month: number;
+    day: number;
+    past_status?: number;
+}
+
 export const Slider: React.FC = () => {
-    let events: JSX.Element[] = [
-        <EventComponent src={''} />,
-        <EventComponent src={""} />,
-        <EventComponent src={""} />,
-        <EventComponent src={""} />,
-        <EventComponent src={""} />
-    ];
+
+    // simulate componentDidMount(), do axios call
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/events');
+                let fetchedEvents: JSX.Element[] = [];
+                response.data.map((item: Event) => {
+                    fetchedEvents.push(<EventComponent 
+                        event_name={item.event_name} 
+                        image={item.image}
+                        year={item.year}
+                        month={item.month}
+                        day={item.day}
+                    />);
+                });
+                setEvents(fetchedEvents);
+            } catch (err) {
+                console.log(err);
+                setEvents([
+                    <EventComponent 
+                        event_name={"Fetched failed. Retry."} 
+                        image={""}
+                        year={0}
+                        month={0}
+                        day={0}
+                    />
+                ]);
+            }
+        })();
+        
+    }, []);
+
+    const [events, setEvents] = useState([<EventComponent 
+        event_name={"N/A"} 
+        image={"N/A"}
+        year={0}
+        month={0}
+        day={0}    
+    />]);
 
     const [x, setX] = useState(0);
 
@@ -32,7 +76,7 @@ export const Slider: React.FC = () => {
         const slideMarginRight: number = parseInt(slideStyles.getPropertyValue('margin-right').slice(0, -2));
         const slideWidth: number = parseInt(slideStyles.getPropertyValue('min-width')) / 100;
 
-        x === 0 ? setX(-((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)) * (events.length - 1)) : setX(x + ((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)));
+        x >= 0 ? setX(-((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)) * (events.length - 1)) : setX(x + ((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)));
     };
 
     const goRight = function(): void {
@@ -49,7 +93,7 @@ export const Slider: React.FC = () => {
         const slideMarginRight: number = parseInt(slideStyles.getPropertyValue('margin-right').slice(0, -2));
         const slideWidth: number = parseInt(slideStyles.getPropertyValue('min-width')) / 100;
         
-        x === -((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)) * (events.length - 1) ? setX(0) : setX(x - ((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)));
+        x <= -((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)) * (events.length - 1) ? setX(0) : setX(x - ((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)));
     };
 
     return (
@@ -76,25 +120,13 @@ export const Slider: React.FC = () => {
     );
 };
 
-interface EventComponentProps {
-    src: string;
-}
-
-const EventComponent: React.FC<EventComponentProps> = ({src}) => {
+const EventComponent: React.FC<Event> = ({event_name, image, year, month, day}) => {
 
     const imgStyles = {
         width: "100%",
         height: "100%",
         objectFit: "contain"
     };
-
-    //const image: any = require(src);
-    console.log(src);
-    console.log(typeof(src));
-    console.log(src.valueOf());
-    //console.log(fox);
-    //console.log(logo);
-    //console.log(src.default);
     
     return (
         <div style={{height: "100%", textAlign: "center"}}>
@@ -114,15 +146,15 @@ const EventComponent: React.FC<EventComponentProps> = ({src}) => {
                     height: "100%",
                     objectFit: "cover"
                 }}></img>*/}
-                <img width="400" height="400" src={src} alt="slide-img" style={{
+                <img width="400" height="400" src={image} alt="slide-img" style={{
                     width: "100%",
                     height: "100%",
                     objectFit: "cover"
                 }}></img>
             </div>
-            <div style={{height: "40%"}}>
-                <p>Example Title</p>
-                <p>Example Date</p>
+            <div style={{height: "40%", padding: "10px"}}>
+                <p>{event_name}</p>
+                <p>{month}/{day}/{year}</p>
             </div>
         </div>
     );   
