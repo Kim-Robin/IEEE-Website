@@ -1,5 +1,6 @@
-module.exports ={
+module.exports = {
     entry: '',
     output: {},
-    module:{},
-    plugins:[]
+    module: {},
+    plugins: []
+};

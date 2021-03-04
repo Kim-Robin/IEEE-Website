@@ -1,0 +1,65 @@
+.social-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+    width: 100%;
+    flex-direction: row;
+}
+
+.social-container li {
+    height: 70px;
+    width: 70px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    transition-timing-function: linear;
+    border: 1px solid rgb(46, 36, 89);
+    -webkit-border: 1px solid rgb(46, 36, 89);
+    font-size: 30px;
+    text-align: center; 
+} 
+
+ .social-container a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.social-container li:hover {
+    box-shadow: px -4px rgb(46, 36, 89);
+    -webkit-box-shadow: -4px 4px rgb(46, 36, 89);
+}
+
+.social-container li:nth-child(1) a {
+    color: #e4457a;
+    /* color: #e1306c; */
+    /* color: #ee4056; */
+}
+
+.social-container li:nth-child(2) a {
+    color: #1da1f2;
+}
+
+.social-container li:nth-child(3) a {
+    color: black;
+}
+
+.social-container > li:nth-child(4) a {
+    color: #ff0000;
+}
+
+.social-container li:nth-child(5) a {
+    color: lavender;
+}
+
+.social-container li:nth-child(6) a {
+    color: #007bb5;
+}
