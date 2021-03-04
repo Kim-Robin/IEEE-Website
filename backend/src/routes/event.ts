@@ -25,5 +25,11 @@ router.get('/events', cors(), (req: express.Request, res: express.Response ) =>{
         }));
 });
 
+router.get('/events/:images', (req, res)=> {
+	console.log(req.params.images);
+	res.sendFile(__dirname.slice(0,-11) + 'images/event/' + req.params.images + ".jpg");
+
+});
+
 
 export = router;
