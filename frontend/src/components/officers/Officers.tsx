@@ -8,6 +8,7 @@ export const Officers: React.FC = () => {
     useEffect(() => {
         function makeOfficerCards(data: any) {
             let fetchedOfficers: JSX.Element[] = [];
+            console.log(fetchedOfficers);
             data.map((item: Members) => {
                 fetchedOfficers.push(<OfficerCard
                     id={item.id}
@@ -18,6 +19,7 @@ export const Officers: React.FC = () => {
                     linkedIn={item.linkedIn}
                     start_year={item.start_year}
                     end_year={item.end_year}
+                    image={item.image}
                 />);
             });
             return fetchedOfficers;
@@ -49,6 +51,7 @@ export const Officers: React.FC = () => {
         linkedIn={""}
         start_year={0}
         end_year={0}
+        image={""}
     />]);
 
     const [jboard, setJboard] = useState([<OfficerCard
@@ -60,6 +63,7 @@ export const Officers: React.FC = () => {
         linkedIn={""}
         start_year={0}
         end_year={0}
+        image={""}
     />]);
 
     const [dboard, setDboard] = useState([<OfficerCard
@@ -71,6 +75,7 @@ export const Officers: React.FC = () => {
         linkedIn={""}
         start_year={0}
         end_year={0}
+        image={""}
     />]);
 
     // hook with an initial state as the e board
@@ -141,14 +146,14 @@ export const Officers: React.FC = () => {
     );
 }
 
-const OfficerCard: React.FC<Members> = ({first_name, last_name, role, position, linkedIn, start_year, end_year}) => {
+const OfficerCard: React.FC<Members> = ({first_name, last_name, role, position, linkedIn, start_year, end_year, image}) => {
     function getPlaceholder(event: any) {
         event.target.src = "https://via.placeholder.com/200x200.png?text=IEEE+Officer";
     }
 
     return (
         <div className="officer-card">
-            <img className="officer-portrait" width="200" src={linkedIn} alt="IEEE Officer Portrait" onError={getPlaceholder}></img>
+            <img className="officer-portrait" width="200" src={image} alt="IEEE Officer Portrait" onError={getPlaceholder}></img>
             <div>
                 <p>{first_name} {last_name}</p>
                 <p>{position}</p>
