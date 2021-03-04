@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Events } from '../../../../backend/src/model/events';
 import fetchEvents from './fetchEvents';
 
-import test from '../../images/event-thumbnails/2020-2021/ieee_0_intro.jpg';
-
 export const Slider: React.FC = () => {
 
     // simulate componentDidMount(), do axios call
