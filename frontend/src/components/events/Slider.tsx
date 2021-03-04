@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Events } from '../../../../backend/src/model/events';
 
 // import fox from './fox.jpg';
 
@@ -7,16 +8,6 @@ import axios from 'axios';
 // import right_arrow from './right_arrow.svg';
 
 // const logo: any = require('./fox.jpg');
-
-interface Event {
-    id?: number;
-    event_name: string;
-    image: string;
-    year: number;
-    month: number;
-    day: number;
-    past_status?: number;
-}
 
 export const Slider: React.FC = () => {
 
@@ -26,13 +17,15 @@ export const Slider: React.FC = () => {
             try {
                 const response = await axios.get('http://localhost:5000/events');
                 let fetchedEvents: JSX.Element[] = [];
-                response.data.map((item: Event) => {
+                response.data.map((item: Events) => {
                     fetchedEvents.push(<EventComponent 
+                        id={item.id}
                         event_name={item.event_name} 
                         image={item.image}
                         year={item.year}
                         month={item.month}
                         day={item.day}
+                        past_status={item.past_status}
                     />);
                 });
                 setEvents(fetchedEvents);
@@ -40,11 +33,13 @@ export const Slider: React.FC = () => {
                 console.log(err);
                 setEvents([
                     <EventComponent 
+                        id={-1}
                         event_name={"Fetched failed. Retry."} 
                         image={""}
                         year={0}
                         month={0}
                         day={0}
+                        past_status={0}
                     />
                 ]);
             }
@@ -53,11 +48,13 @@ export const Slider: React.FC = () => {
     }, []);
 
     const [events, setEvents] = useState([<EventComponent 
+        id={-1}
         event_name={"N/A"} 
         image={"N/A"}
         year={0}
         month={0}
         day={0}    
+        past_status={0}
     />]);
 
     const [x, setX] = useState(0);
@@ -120,7 +117,7 @@ export const Slider: React.FC = () => {
     );
 };
 
-const EventComponent: React.FC<Event> = ({event_name, image, year, month, day}) => {
+const EventComponent: React.FC<Events> = ({event_name, image, year, month, day}) => {
 
     const imgStyles = {
         width: "100%",
