@@ -33,7 +33,7 @@ body {
 
 .slide {
     position: relative;
-    min-width: 25%;
+    min-width: 35%;
     height: 95%;
     transition: 0.5s;
     overflow: hidden;
@@ -78,7 +78,7 @@ body {
 
 @media only screen and (max-width: 800px) {
     .slide {
-        min-width: 40%;
+        min-width: 70%;
         box-shadow: rgba(0, 0, 0, 0.117647) 0px 2px 4px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
         border: none;
     }
@@ -86,8 +86,8 @@ body {
 
 @media only screen and (max-width: 500px) {
     .slide {
-        min-width: 60%;
-        margin-left: 7%;
+        min-width: 80%;
+        margin-left: 10%;
     }
 
     .highlight {
