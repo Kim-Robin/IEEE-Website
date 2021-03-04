@@ -1,94 +1,65 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Ubuntu', sans-serif;
-}
-
 .social-container {
-    background-color: #BFA1F0;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     min-height: 40vh;
-    text-align: center;
-    background: #dde1e7;
     width: 100%;
+    flex-direction: row;
 }
 
-li {
-    position: relative;
-    list-style: none;
+.social-container li {
     height: 70px;
     width: 70px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
     margin: 0 10px;
-    border-radius: 50%;
-    background: #dde1e7;
     cursor: pointer;
-    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+    transition: 0.3s;
+    transition-timing-function: linear;
+    border: 1px solid rgb(46, 36, 89);
+    -webkit-border: 1px solid rgb(46, 36, 89);
+    font-size: 30px;
+    text-align: center; 
+} 
+
+ .social-container a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
-li:active {
-    box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, 0.288);
+.social-container li:hover {
+    box-shadow: px -4px rgb(46, 36, 89);
+    -webkit-box-shadow: -4px 4px rgb(46, 36, 89);
 }
 
-li a {
-    line-height: 70px;
-    font-size: 27px;
-    color: #b6bbc5;
-}
-
-li a:active {
-    font-size: 25px
-}
-
-.social-container li.shadow {
-    box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, 0.288);
-}
-
-.social-container li.shadow a {
-    font-size: 25px
-}
-
-li:nth-child(1):active a {
+.social-container li:nth-child(1) a {
+    color: #e4457a;
     /* color: #e1306c; */
-    color: #ee4056;
+    /* color: #ee4056; */
 }
 
-li:nth-child(2):active a {
+.social-container li:nth-child(2) a {
     color: #1da1f2;
 }
 
-li:nth-child(3):active a {
+.social-container li:nth-child(3) a {
     color: black;
 }
 
-li:nth-child(4):active a {
+.social-container > li:nth-child(4) a {
     color: #ff0000;
 }
 
-li:nth-child(5):active a {
+.social-container li:nth-child(5) a {
     color: lavender;
 }
 
-li:nth-child(1).fill-color a {
-    /* color: #e1306c; */
-    color: #ee4056;
-}
-
-li:nth-child(2).fill-color a {
-    color: #1da1f2;
-}
-
-li:nth-child(3).fill-color a {
-    color: black;
-}
-
-li:nth-child(4).fill-color a {
-    color: #ff0000;
-}
-
-li:nth-child(5).fill-color a {
-    color: lavender;
+.social-container li:nth-child(6) a {
+    color: #007bb5;
 }
