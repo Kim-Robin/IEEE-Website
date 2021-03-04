@@ -33,13 +33,16 @@ body {
 
 .slide {
     position: relative;
-    border: 1px solid black;
     min-width: 25%;
     height: 95%;
     transition: 0.5s;
     overflow: hidden;
     margin-left: 15%;
     margin-right: 15%;
+    -webkit-box-shadow: 8px -8px rgb(46, 36, 89);
+    -webkit-border: 1px solid rgb(46, 36, 89);
+    box-shadow: 8px -8px rgb(46, 36, 89);
+    border: 1px solid rgb(46, 36, 89);
 }
 
 #goLeft, #goRight {
@@ -71,6 +74,14 @@ body {
     right: 0;
     border-radius: 1rem 0 0 1rem;
     background: url('../images/right_arrow.svg') no-repeat center center;
+}
+
+@media only screen and (max-width: 800px) {
+    .slide {
+        min-width: 40%;
+        box-shadow: rgba(0, 0, 0, 0.117647) 0px 2px 4px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+        border: none;
+    }
 }
 
 @media only screen and (max-width: 500px) {

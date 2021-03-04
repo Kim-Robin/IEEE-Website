@@ -14,7 +14,7 @@ export const Slider: React.FC = () => {
             let eventCards: JSX.Element[] = [];
             fetchedEvents.forEach((item: Events) => {
                 eventCards.push(
-                    <EventComponent 
+                    <EventComponent
                         id={item.id}
                         event_name={item.event_name}
                         image={item.image}
@@ -26,17 +26,17 @@ export const Slider: React.FC = () => {
                 );
             });
             setEvents(eventCards);
-        })();        
+        })();
     }, []);
 
-    const [events, setEvents] = useState([<EventComponent 
+    const [events, setEvents] = useState([<EventComponent
         id={-1}
-        event_name={"N/A"} 
+        event_name={"N/A"}
         image={"N/A"}
         year={0}
         month={0}
-        day={0} 
-        past_status={0}   
+        day={0}
+        past_status={0}
     />]);
 
     const [x, setX] = useState(0);
@@ -65,13 +65,13 @@ export const Slider: React.FC = () => {
         const slideStyles: CSSStyleDeclaration = window.getComputedStyle(slide);
 
         const browserWidth: number = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-        
+
         // +x and parseInt both convert string to integer
         // using slice to get rid of px
         const slideMarginLeft: number = +(slideStyles.getPropertyValue('margin-left').slice(0, -2));
         const slideMarginRight: number = parseInt(slideStyles.getPropertyValue('margin-right').slice(0, -2));
         const slideWidth: number = parseInt(slideStyles.getPropertyValue('min-width')) / 100;
-        
+
         x <= -((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)) * (events.length - 1) ? setX(0) : setX(x - ((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)));
     };
 
@@ -90,17 +90,17 @@ export const Slider: React.FC = () => {
                             </div>
                         )
                     })
-                }           
+                }
                 <button id="goLeft" onClick={goLeft}></button>
                 <button id="goRight" onClick={goRight}></button>
             </div>
         </div>
-        
+
     );
 };
 
 const EventComponent: React.FC<Events> = ({event_name, image, year, month, day}) => {
-    
+
     return (
         <div style={{height: "100%", textAlign: "center"}}>
             <div style={{height: "60%"}}>
@@ -115,5 +115,5 @@ const EventComponent: React.FC<Events> = ({event_name, image, year, month, day})
                 <p>{month}/{day}/{year}</p>
             </div>
         </div>
-    );   
+    );
 }
