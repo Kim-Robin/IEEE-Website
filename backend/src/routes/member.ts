@@ -57,9 +57,9 @@ router.get('/members', (req: express.Request, res: express.Response) => {
 
 });
 
-router.get('/members/:name', (req, res)=>{
+router.get('/members/:year/:name', (req, res)=>{
 	console.log(req.params.name);
-	res.sendFile(__dirname.slice(0,-11) + 'images/'+ req.params.name + ".jpg");
+	res.sendFile(__dirname.slice(0,-11) + 'images/' + req.params.year + '/'+ req.params.name + ".jpg");
 
 });
 
