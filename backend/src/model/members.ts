@@ -9,6 +9,7 @@ export type Members = {
     linkedIn: string;
     start_year: number;
     end_year: number;
+    image: string;
 }
 
 const getAllMembers = async ()=>{
