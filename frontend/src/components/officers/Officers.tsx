@@ -123,24 +123,26 @@ export const Officers: React.FC = () => {
     }
 
     return (
-        <div id="main-container">
-            <div className="officers-header">
-                <h1 style={{marginLeft: "2%"}}>Meet the...</h1>
-                <ul className="officer-group-toggle-container">
-                    <li className="officer-group-toggle active" onClick={toggleOfficerGroup}>E-Board</li>
-                    <li className="officer-group-toggle" onClick={(e) => toggleOfficerGroup(e)}>J-Board</li>
-                    <li className="officer-group-toggle" onClick={toggleOfficerGroup}>D-Board</li>
-                </ul>
-            </div>
-            <div className="officers-highlight"></div>
-            <div className="officers-container">
-                {
-                    selectedOfficersGroup.map((item: JSX.Element, index: number) => {
-                        return (
-                            <div key={index} style={{margin: "2%"}}>{item}</div>
-                        )
-                    })
-                }
+        <div id="officers-component">
+            <div id="main-container">
+                <div className="officers-header">
+                    <h1 style={{marginLeft: "2%"}}>Meet the...</h1>
+                    <ul className="officer-group-toggle-container">
+                        <li className="officer-group-toggle active" onClick={toggleOfficerGroup}>E-Board</li>
+                        <li className="officer-group-toggle" onClick={(e) => toggleOfficerGroup(e)}>J-Board</li>
+                        <li className="officer-group-toggle" onClick={toggleOfficerGroup}>D-Board</li>
+                    </ul>
+                </div>
+                <div className="officers-highlight"></div>
+                <div className="officers-container">
+                    {
+                        selectedOfficersGroup.map((item: JSX.Element, index: number) => {
+                            return (
+                                <div key={index} style={{margin: "2%"}}>{item}</div>
+                            )
+                        })
+                    }
+                </div>
             </div>
         </div>
     );
