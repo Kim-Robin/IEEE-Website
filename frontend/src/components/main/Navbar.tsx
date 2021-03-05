@@ -9,6 +9,18 @@ type Props = {
 const Navbar: React.FC<Props> = ({className}) =>{
 
     const logoHandle = (e: any)  => {
+
+        const elem = e.target as HTMLElement;
+        switch (elem.innerHTML) {
+            case "Event":
+                document.getElementById("events-component")?.scrollIntoView();
+                break;
+            case "Members":
+                document.getElementById("officers-component")?.scrollIntoView();
+                break;
+            
+        }
+
         const browserWidth: number = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
         if (browserWidth < 800) {
@@ -67,7 +79,7 @@ const Navbar: React.FC<Props> = ({className}) =>{
             <div className={className}>
                 <ul className="nav-list">
                     <li className="nav-list-item" onClick={logoHandle}>
-                        <a href="#events-component"  >Event</a>
+                        <a href="#events-component">Event</a>
                     </li>
                     <li className="nav-list-item">
                         <a href="#officers-component" >Members</a>
