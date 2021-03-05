@@ -99,7 +99,7 @@ export const Slider: React.FC = () => {
 const EventComponent: React.FC<Events> = ({event_name, image, year, month, day}) => {
 
     function getPlaceholder(event: any) {
-        event.target.src = "https://via.placeholder.com/400x400.png?text=IEEE+Event";        
+        event.target.src = "http://localhost:5000/events/placeholder";        
     }
 
     return (
