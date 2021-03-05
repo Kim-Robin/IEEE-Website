@@ -73,7 +73,7 @@ export const Slider: React.FC = () => {
     };
 
     return (
-        <div>
+        <div id="events-component">
             <div id="slider-header">
                 <h1>Events</h1>
             </div>
