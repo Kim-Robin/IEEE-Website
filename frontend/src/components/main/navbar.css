@@ -5,9 +5,9 @@
     max-height: 137px;
     display: flex;
     align-items: center;
-    position: sticky;
+    /* position: sticky;
     -webkit-position: sticky;
-    top: 0;
+    top: 0; */
 }
 
 #logo-container {
