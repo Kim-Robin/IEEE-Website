@@ -63,5 +63,9 @@ router.get('/members/:year/:name', (req, res)=>{
 
 });
 
+router.get('/members/placeholder', (req, res) => {
+    res.sendFile(__dirname.slice(0, -11) + 'images/profile_placeholder_0.jpg');
+});
+
 
 export = router;
