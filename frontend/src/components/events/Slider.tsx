@@ -1,59 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Events } from '../../../../backend/src/model/events';
-
-// import fox from './fox.jpg';
-
-// import left_arrow from './left_arrow.svg';
-// import right_arrow from './right_arrow.svg';
-
-// const logo: any = require('./fox.jpg');
+import fetchEvents from './fetchEvents';
 
 export const Slider: React.FC = () => {
 
     // simulate componentDidMount(), do axios call
     useEffect(() => {
         (async () => {
-            try {
-                const response = await axios.get('http://localhost:5000/events');
-                let fetchedEvents: JSX.Element[] = [];
-                response.data.map((item: Events) => {
-                    fetchedEvents.push(<EventComponent 
+            const fetchedEvents = await fetchEvents();
+            let eventCards: JSX.Element[] = [];
+            fetchedEvents.forEach((item: Events) => {
+                eventCards.push(
+                    <EventComponent
                         id={item.id}
-                        event_name={item.event_name} 
+                        event_name={item.event_name}
                         image={item.image}
                         year={item.year}
                         month={item.month}
                         day={item.day}
                         past_status={item.past_status}
-                    />);
-                });
-                setEvents(fetchedEvents);
-            } catch (err) {
-                console.log(err);
-                setEvents([
-                    <EventComponent 
-                        id={-1}
-                        event_name={"Fetched failed. Retry."} 
-                        image={""}
-                        year={0}
-                        month={0}
-                        day={0}
-                        past_status={0}
                     />
-                ]);
-            }
+                );
+            });
+            setEvents(eventCards);
         })();
-        
     }, []);
 
-    const [events, setEvents] = useState([<EventComponent 
+    const [events, setEvents] = useState([<EventComponent
         id={-1}
-        event_name={"N/A"} 
+        event_name={"N/A"}
         image={"N/A"}
         year={0}
         month={0}
-        day={0}    
+        day={0}
         past_status={0}
     />]);
 
@@ -83,13 +62,13 @@ export const Slider: React.FC = () => {
         const slideStyles: CSSStyleDeclaration = window.getComputedStyle(slide);
 
         const browserWidth: number = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-        
+
         // +x and parseInt both convert string to integer
         // using slice to get rid of px
         const slideMarginLeft: number = +(slideStyles.getPropertyValue('margin-left').slice(0, -2));
         const slideMarginRight: number = parseInt(slideStyles.getPropertyValue('margin-right').slice(0, -2));
         const slideWidth: number = parseInt(slideStyles.getPropertyValue('min-width')) / 100;
-        
+
         x <= -((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)) * (events.length - 1) ? setX(0) : setX(x - ((slideMarginLeft + slideMarginRight) + (slideWidth * browserWidth)));
     };
 
@@ -108,42 +87,25 @@ export const Slider: React.FC = () => {
                             </div>
                         )
                     })
-                }           
+                }
                 <button id="goLeft" onClick={goLeft}></button>
                 <button id="goRight" onClick={goRight}></button>
             </div>
         </div>
-        
+
     );
 };
 
 const EventComponent: React.FC<Events> = ({event_name, image, year, month, day}) => {
 
-    const imgStyles = {
-        width: "100%",
-        height: "100%",
-        objectFit: "contain"
-    };
-    
+    function getPlaceholder(event: any) {
+        event.target.src = "http://localhost:5000/events/placeholder";        
+    }
+
     return (
         <div style={{height: "100%", textAlign: "center"}}>
             <div style={{height: "60%"}}>
-                {/*<img width="400" height="400" src="https://placehold.it/400x400" alt="slide-img" style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover"
-                }}></img>*/}
-                {/*<img width="400" height="400" src={require(src)} alt="slide-img" style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover"
-                }}></img>*/}
-                {/*<img width="400" height="400" src={String(image)} alt="slide-img" style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover"
-                }}></img>*/}
-                <img width="400" height="400" src={image} alt="slide-img" style={{
+                <img width="400" height="400" src={image} alt="slide-img" onError={getPlaceholder} style={{
                     width: "100%",
                     height: "100%",
                     objectFit: "cover"
@@ -154,5 +116,5 @@ const EventComponent: React.FC<Events> = ({event_name, image, year, month, day})
                 <p>{month}/{day}/{year}</p>
             </div>
         </div>
-    );   
+    );
 }
