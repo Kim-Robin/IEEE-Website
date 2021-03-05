@@ -1,15 +1,13 @@
 .word{
     font-family: Ubuntu;
     font-size: 60px;
-    text-align: left;
+    text-align: center;
+    margin: 20px;
 }
 
-.wordColumn{
-    display: flex;
-    left: 50%;
-    margin-left: auto;
-    margin-right: 11.3%;
-    justify-content: center;
-    width: 480px;
-    min-height: 300px;
+@media only screen and (max-width: 800px) {
+
+    .word {
+        font-size: 2.5em;
+    }
 }
