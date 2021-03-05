@@ -148,7 +148,7 @@ export const Officers: React.FC = () => {
 
 const OfficerCard: React.FC<Members> = ({first_name, last_name, role, position, linkedIn, start_year, end_year, image}) => {
     function getPlaceholder(event: any) {
-        event.target.src = "https://via.placeholder.com/200x200.png?text=IEEE+Officer";
+        event.target.src = "http://localhost:5000/members/placeholder";
     }
 
     return (
