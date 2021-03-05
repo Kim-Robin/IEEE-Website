@@ -28,14 +28,14 @@ const Typeit:React.FC<Props> = ({className, phrase, delay}) => {
 
     useEffect(()=>{
         typingAnimation();
-            }, [])
+    }, [])
 
     return(
-            <div className={className}>
-                 <div className="wordColumn">
-                    <h1 className="word"></h1>
-                </div>
+        <div className={className}>
+            <div className="wordColumn">
+                <h1 className="word"></h1>
             </div>
+        </div>
     );
 }
 
