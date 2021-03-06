@@ -18,7 +18,7 @@ const Navbar: React.FC<Props> = ({className}) =>{
             case "Members":
                 document.getElementById("officers-component")?.scrollIntoView();
                 break;
-            
+
         }
 
         const browserWidth: number = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
@@ -55,7 +55,7 @@ const Navbar: React.FC<Props> = ({className}) =>{
 
             let displayStatus = document.getElementsByClassName('navbar')[0];
             // let display800Status = document.getElementsByClassName('welcomeText')[0];
-            
+
             if(displayStatus.classList.contains('display-none')) {
                 displayStatus.classList.remove('display-none');
             } else {
@@ -71,7 +71,7 @@ const Navbar: React.FC<Props> = ({className}) =>{
     }
 
     return(
-        <div className="navbar-container"> 
+        <div className="navbar-container">
             <div id="logo-container">
                 <img alt="circuits" id="circuits" className="circuits_0" />
                 <img alt="logo" className="logo1 nav-logo" onClick={logoHandle} />
@@ -79,36 +79,30 @@ const Navbar: React.FC<Props> = ({className}) =>{
             <div className={className}>
                 <ul className="nav-list">
                     <li className="nav-list-item" onClick={logoHandle}>
-                        <a href="#events-component">Event</a>
+                        <a href="#about-component" >About</a>
                     </li>
-                    <li className="nav-list-item">
+                    <li className="nav-list-item" onClick={logoHandle}>
+                        <a href="#events-component"  >Event</a>
+                    </li>
+                    <li className="nav-list-item" onClick={logoHandle}>
                         <a href="#officers-component" >Members</a>
                     </li>
-                    <li className="nav-list-item">
-                        <a href="" >About</a>
-                    </li>
-                    <li className="nav-list-item">
-                        <a href="" >Contact</a>
-                    </li>
-                </ul> 
+                </ul>
             </div>
             <div id="overlay">
                 <ul className="overlay-content">
+                    <li className="overlay-nav-list-item">
+                        <a href="#about-component" onClick={logoHandle} >About</a>
+                    </li>
                     <li className="overlay-nav-list-item">
                         <a href="#events-component" onClick={logoHandle} >Event</a>
                     </li>
                     <li className="overlay-nav-list-item">
                         <a href="#officers-component" onClick={logoHandle} >Members</a>
                     </li>
-                    <li className="overlay-nav-list-item">
-                        <a href="" onClick={logoHandle} >About</a>
-                    </li>
-                    <li className="overlay-nav-list-item">
-                        <a href="" onClick={logoHandle} >Contact</a>
-                    </li>
                 </ul>
             </div>
-        </div>    
+        </div>
     );
 }
 
