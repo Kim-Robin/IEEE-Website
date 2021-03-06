@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import './styles/App.css';
+import './styles/about.css';
 import './styles/slider.css';
 import './styles/officers.css';
 import './components/social/social.css';
