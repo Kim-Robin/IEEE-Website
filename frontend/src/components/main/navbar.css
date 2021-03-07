@@ -1,20 +1,63 @@
-ul{
+
+.navbar-container{
+    width: 100vw;
+    min-height: 130px;
+    max-height: 137px;
+    display: flex;
+    align-items: center;
+    /* position: sticky;
+    -webkit-position: sticky;
+    top: 0; */
+}
+
+#logo-container {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+#circuits {
+    position: absolute;
+    max-width: 300px;
+    z-index: 2;
+}
+
+.circuits_0 {
+    content: URL('../../images/circuits/circuit_0.PNG');
+}
+
+.circuits_1 {
+    content: URL('../../images/circuits/circuit_1.PNG');
+}
+
+.circuits_2 {
+    content: URL('../../images/circuits/circuit_2.PNG');
+}
+
+.circuits_3 {
+    content: URL('../../images/circuits/circuit_3.PNG');
+}
+
+.circuits_4 {
+    content: URL('../../images/circuits/circuit_4.PNG');
+}
+
+.nav-logo{
+    cursor: pointer;
+    z-index: 3;
+}
+
+.nav-list {
+    max-width: 800px;
     list-style-type: none;
     margin: 0px;
     padding: 0px;
     width: auto;
 }
 
-li{
-    padding: 0px;
-}
-
-a{
-    text-decoration: none;
-}
-
-.nav-content{
-    font-family: Ubuntu;
+.nav-list-item {
+    /* font-family: Ubuntu;
     padding-top: 12px;
     padding-bottom: 12px;
     padding-left: 15px;
@@ -24,21 +67,85 @@ a{
     min-width: 110px;
     text-align: center;
     display: inline;
-    color: #BFA1F0;
+    color: #BFA1F0; */
+    font-family: Ubuntu;
+    margin: 10px;
+    padding: 5px;
+    transition: 0.1s; 
+    font-size: 1.17em;
+    font-weight: bold;
+    border: 3px solid rgb(46, 36, 89);
+    border-radius: 0.5em;
+    display: inline;
 }
 
-.nav-list{
-    max-width: 800px;
+.nav-list-item:hover {
+    cursor: pointer;
+    border: 3px solid #EAB03C;
+    
+    background-color: rgb(46, 36, 89);
+}
+
+.nav-list-item:hover > a {
+    color: white;
+}
+
+.nav-list-item > a {
+    text-decoration: none;
+    transition: 0.1s;
+    color: rgb(46, 36, 89);
+}
+
+#overlay {
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    transition: 0.1s;
+    overflow-x: hidden;
+    display: none;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    padding: 0;
+}
+
+#overlay a {
+    padding: 8px; 
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block; 
+    transition: 0.05s;
+}
+
+#overlay a:hover, #overlay a:focus {
+    color: #f1f1f1;
 }
 
 @media only screen and (max-width: 800px){
-    .nav-content{
-        font-family: Ubuntu;
-        padding-top: 12px;
-        padding-bottom: 12px;
-        font-size: 25px;
-        max-width: none;
-        text-align: center;
+
+    #circuits {
+        max-width: 200px;
+    }
+
+    .nav-logo{
+        max-width: 200px;
+    }
+
+    .nav-list {
+        display: none;
+    }
+
+    #overlay {
         display: block;
     }
 

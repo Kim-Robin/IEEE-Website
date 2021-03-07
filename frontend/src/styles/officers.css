@@ -1,0 +1,115 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu&display=swap);
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.officers-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.officers-header > h1 {
+    align-self: center;
+    z-index: -1;
+}
+
+.officers-header > ul {
+    flex-grow: 2;
+    align-self: center;
+}
+
+.officers-highlight {
+    height: 20px;
+    position: relative;
+    top: -40px;
+    left: 10px;
+    width: 230px;
+    line-height: 1.6;
+    background-color: #EAB03C;
+    z-index: -10;
+}
+
+.officer-group-toggle-container {
+    display: flex;
+    list-style-type: none;
+    padding: 0 4% 0 0;
+    margin-left: 2%;
+    justify-content: flex-end;
+}
+
+.officer-group-toggle {
+    margin: 10px;
+    padding: 5px;
+    transition: 0.1s;
+    font-size: 1.17em;
+    font-weight: bold;
+    border: 3px solid rgb(46, 36, 89);
+    border-radius: 0.5rem;
+}
+
+.officer-group-toggle.active {
+    border-radius: 0.5rem;
+    border: 3px solid #EAB03C;
+    color: white;
+    background-color: rgb(46, 36, 89);
+}
+
+.officer-group-toggle:hover {
+    cursor: pointer;
+    /* background-color: #BFA1F0; */
+    border: 3px solid #EAB03C;
+    color: white;
+    background-color: rgb(46, 36, 89);
+}
+
+.officers-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-height: 25%;
+    overflow-y: hidden;
+}
+
+.officer-card {
+    text-align: center;    
+    -webkit-box-shadow: 8px -8px rgb(46, 36, 89);
+    -webkit-border: 1px solid rgb(46, 36, 89);
+    box-shadow: 8px -8px rgb(46, 36, 89);
+    border: 1px solid rgb(46, 36, 89);
+}
+
+.officer-card > img {
+    object-fit: cover;
+}
+
+.officer-card > div {
+    padding: 1%;
+}
+
+/** some mobile styling **/
+@media only screen and (max-width: 800px) {
+    .officer-card {
+        box-shadow: rgba(0, 0, 0, 0.117647) 0px 2px 4px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+        border: none;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .officers-header {
+        flex-wrap: wrap;
+    }
+
+    .officers-highlight {
+        left: 0;
+        top: -95px;
+    }
+
+    .officer-group-toggle-container {
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+    }
+}

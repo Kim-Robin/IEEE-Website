@@ -1,62 +1,45 @@
-.mainpage{
+.main-header{
     width: 100%;
-    min-height: 450px;
+    min-height: 80vh;
     height: auto;
     position: relative;
     max-height: 750px;
-    background: linear-gradient(140deg, #FFFFFF 50%, #BFA1F0 50%);
-    padding-bottom: 20px;
+    background: linear-gradient(to bottom right, #fff 0%, #fff 50%, #BFA1F0 50%, #BFA1F0 100%);
+    padding-bottom: 80px;
 }
 
-.welcomeText{
-    padding-top: 2%;
-    padding-bottom: 2%;
-}
-
-.top{
-    padding:1px;
-    width: 100%;
-    min-height: 130px;
-    max-height: 137px;
-}
-
-.nav-logo{
-    float:left;
-    width: auto;
-    max-width: 40%;
-
-}
-.navbar{
-    float:left;
-    width: auto;
-    margin-top: 45px;
-    padding-top: 1.2%;
-    padding-bottom: 4.5%;
+.navbar {
     height: 100%;
-    max-height: 137px;
-    max-width: 800px;
 }
 
 .display-none{
     display: none;
 }
 
+.welcomeText{
+    position: absolute;
+    width: 50%;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    display: flex;
+    align-items: flex-end;
+}
+
 @media only screen and (max-width: 800px){
-    .top{
-        background: #FFFFFF;
-    }
-    .nav-logo{
-        float: none;
-        margin-left: 30%;
-    }
-    .navbar{
-        float: none;
-        max-height: 178px;
-    }
-    .mainpage{
+    .main-header{
         background:#BFA1F0;
+        min-height: auto;
+        padding: 0;
     }
-    
+
+    .welcomeText {
+        position: static;
+        width: 100%;
+        text-align: center;
+        
+    }
+
     .display-none800{
         display: none;
     }
