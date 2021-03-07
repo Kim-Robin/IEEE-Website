@@ -10,18 +10,18 @@ const index_1 = __importDefault(require("./routes/index"));
 const event_1 = __importDefault(require("./routes/event"));
 const member_1 = __importDefault(require("./routes/member"));
 const schedule_1 = __importDefault(require("./routes/schedule"));
+const test_1 = __importDefault(require("./routes/test"));
 const app = express_1.default();
 app.use(cors_1.default());
 app.use(logger_1.default);
+app.use(cors_1.default());
+app.use(express_1.default.static(__dirname));
 app.use(express_1.default.json());
 app.use('/', index_1.default);
 app.use('/', event_1.default);
 app.use('/', schedule_1.default);
 app.use('/', member_1.default);
-app.get("/yo", (req, res) => {
-    console.log("Connected");
-    res.send("Hello world!");
-});
+app.use('/', test_1.default);
 app.listen(5000, () => {
     console.log("server is running on<Plug>PeepOpenort 5000");
 });
