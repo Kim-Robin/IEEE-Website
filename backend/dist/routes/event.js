@@ -22,6 +22,9 @@ router.get('/events', cors_1.default(), (req, res) => {
         err: err.message
     }));
 });
+router.get('/events/placeholder', (req, res) => {
+    res.sendFile(__dirname.slice(0, -11) + 'images/ieee_placeholder_thumbnail.jpg');
+});
 router.get('/events/:images', (req, res) => {
     console.log(req.params.images);
     res.sendFile(__dirname.slice(0, -11) + 'images/event/' + req.params.images + ".jpg");

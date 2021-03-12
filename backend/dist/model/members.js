@@ -16,7 +16,25 @@ const getAllMembers = () => __awaiter(void 0, void 0, void 0, function* () {
     console.log("values" + values);
     return values;
 });
+const getEboardMembers = () => __awaiter(void 0, void 0, void 0, function* () {
+    const values = yield db_1.dbQuery(`SELECT * FROM Members WHERE role = 'Eboard'`);
+    console.log('eboard ' + values);
+    return values;
+});
+const getJboardMembers = () => __awaiter(void 0, void 0, void 0, function* () {
+    const values = yield db_1.dbQuery(`SELECT * FROM Members WHERE role = 'Jboard'`);
+    console.log('jboard ' + values);
+    return values;
+});
+const getDboardMembers = () => __awaiter(void 0, void 0, void 0, function* () {
+    const values = yield db_1.dbQuery(`SELECT * FROM Members WHERE role = 'Dboard'`);
+    console.log('dboard ' + values);
+    return values;
+});
 exports.memberModel = {
-    getAllMembers
+    getAllMembers,
+    getEboardMembers,
+    getJboardMembers,
+    getDboardMembers
 };
 //# sourceMappingURL=members.js.map
