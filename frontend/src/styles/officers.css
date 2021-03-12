@@ -95,6 +95,10 @@ body {
         box-shadow: rgba(0, 0, 0, 0.117647) 0px 2px 4px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
         border: none;
     }
+
+    .officers-highlight {
+        left: 0;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -103,7 +107,6 @@ body {
     }
 
     .officers-highlight {
-        left: 0;
         top: -95px;
     }
 
