@@ -12,6 +12,9 @@ const Navbar: React.FC<Props> = ({className}) =>{
 
         const elem = e.target as HTMLElement;
         switch (elem.innerHTML) {
+            case "About":
+                document.getElementById("about-component")?.scrollIntoView();
+                break;
             case "Event":
                 document.getElementById("events-component")?.scrollIntoView();
                 break;
