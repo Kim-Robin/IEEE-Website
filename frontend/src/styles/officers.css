@@ -12,11 +12,7 @@ body {
 .officers-header > h1 {
     align-self: center;
     z-index: -1;
-}
-
-.officers-header > ul {
-    flex-grow: 2;
-    align-self: center;
+    width: 300px;
 }
 
 .officers-highlight {
@@ -28,6 +24,11 @@ body {
     line-height: 1.6;
     background-color: #EAB03C;
     z-index: -10;
+}
+
+.officers-header > ul {
+    flex-grow: 2;
+    align-self: center;
 }
 
 .officer-group-toggle-container {
